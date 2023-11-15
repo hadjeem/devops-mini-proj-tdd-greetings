@@ -1,11 +1,16 @@
 {
-  "name": "devops-mini-proj-tdd-greetings",
-  "version": "1.0.0",
-  "description": "mini projet 1",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "",
-  "license": "ISC"
+    "name": "devops-mini-proj-tdd-greetings",
+    "version": "1.0.0",
+    "description": "mini projet 1",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "prettier": "prettier --check . ",
+        "prettier:fix": "prettier --write . "
+    },
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+        "prettier": "3.1.0"
+    }
 }
