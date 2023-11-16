@@ -91,13 +91,7 @@ function lowerAndUpperCase (name, languageAnd, greeting) {
   const upperCaseLanguageAnd = languageAnd.toUpperCase()
   const upperCaseGreeting = greeting.toUpperCase()
 
-  for (const nameP of name) {
-    if (nameP === nameP.toUpperCase()) {
-      upperCase.push(nameP)
-    } else {
-      lowerCase.push(nameP)
-    }
-  }
+  fillUpperLower(name, upperCase, lowerCase)
   if (lowerCase.length === 0) {
     return moreThanTwoParameters(
       name,
@@ -105,11 +99,23 @@ function lowerAndUpperCase (name, languageAnd, greeting) {
       upperCaseGreeting
     )
   }
-  if (lowerCase.length === 1) { return `${greeting}, ${lowerCase[0]}. ${upperCaseLanguageAnd} ${upperCaseGreeting} ${upperCase[0]} !` }
+  if (lowerCase.length === 1) {
+    return `${greeting}, ${lowerCase[0]}. ${upperCaseLanguageAnd} ${upperCaseGreeting} ${upperCase[0]} !`
+  }
   return (
     moreThanTwoParameters(lowerCase, languageAnd, greeting) +
         ` ${upperCaseLanguageAnd} ${upperCaseGreeting} ${upperCase[0]} !`
   )
+}
+
+function fillUpperLower (name, upperCase, lowerCase) {
+  for (const nameP of name) {
+    if (nameP === nameP.toUpperCase()) {
+      upperCase.push(nameP)
+    } else {
+      lowerCase.push(nameP)
+    }
+  }
 }
 
 module.exports = greet
