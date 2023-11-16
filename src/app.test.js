@@ -54,3 +54,23 @@ test('should return Hallo, Marie. when given Marie, nl', () => {
   const result = greet(['Marie', 'nl'])
   expect(result).toEqual('Hallo, Marie.')
 })
+
+test('should return Hallo, Marie en Brian. when given Marie, Brian, nl', () => {
+  const result = greet(['Marie', 'Brian', 'nl'])
+  expect(result).toEqual('Hallo, Marie en Brian.')
+})
+
+test('should return Bonjour, Marie et Brian. when given Marie, Brian, fr', () => {
+  const result = greet(['Marie', 'Brian', 'fr'])
+  expect(result).toEqual('Bonjour, Marie et Brian.')
+})
+
+test('should return Bonjour, Marie. ET BONJOUR BRIAN ! when given Marie, BRIAN, fr', () => {
+  const result = greet(['Marie', 'BRIAN', 'fr'])
+  expect(result).toEqual('Bonjour, Marie. ET BONJOUR BRIAN !')
+})
+
+test('should return Hallo, Marie en Charlotte. EN HALLO BRIAN ! when given Marie, BRIAN, Charlotte, nl', () => {
+  const result = greet(['Marie', 'BRIAN', 'Charlotte', 'nl'])
+  expect(result).toEqual('Hallo, Marie en Charlotte. EN HALLO BRIAN !')
+})
