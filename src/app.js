@@ -4,18 +4,7 @@ function greet (name) {
   }
   let greeting
   let langageAnd
-  if (name[name.length - 1] === 'fr') {
-    greeting = 'Bonjour'
-    langageAnd = 'et'
-  }
-  if (name[name.length - 1] === 'en') {
-    greeting = 'Hello'
-    langageAnd = 'and'
-  }
-  if (name[name.length - 1] === 'nl') {
-    greeting = 'Hallo'
-    langageAnd = 'en'
-  }
+    ;({ greeting, langageAnd } = findLangage(name, greeting, langageAnd))
   if (greeting !== undefined) {
     const nameB = []
     for (let index = 0; index < name.length - 1; index++) {
@@ -43,6 +32,22 @@ function greet (name) {
     return `${greeting}, ${name}!`
   }
   return `${greeting}, ${name}.`
+}
+
+function findLangage (name, greeting, langageAnd) {
+  if (name[name.length - 1] === 'fr') {
+    greeting = 'Bonjour'
+    langageAnd = 'et'
+  }
+  if (name[name.length - 1] === 'en') {
+    greeting = 'Hello'
+    langageAnd = 'and'
+  }
+  if (name[name.length - 1] === 'nl') {
+    greeting = 'Hallo'
+    langageAnd = 'en'
+  }
+  return { greeting, langageAnd }
 }
 
 function moreThanTwoParameters (name, langageAnd, greeting) {
