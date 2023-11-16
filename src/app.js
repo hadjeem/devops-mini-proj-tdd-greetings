@@ -63,6 +63,11 @@ function moreThanTwoParameters (name, languageAnd, greeting) {
   let result = `${greeting}, ${name[0]}`
   let end
     ;({ end, result } = areUpperCase(greeting, result, name))
+  result = fillStringMTTP(name, result, languageAnd, end)
+  return result
+}
+
+function fillStringMTTP (name, result, languageAnd, end) {
   for (let index = 1; index < name.length - 1; index++) {
     result += `, ${name[index]}`
   }
