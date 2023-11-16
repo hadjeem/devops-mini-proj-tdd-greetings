@@ -100,7 +100,14 @@ function lowerAndUpperCase (name, languageAnd, greeting) {
     return multipleParameters(name, upperCaseLanguageAnd, upperCaseGreeting)
   }
   if (lowerCase.length === 1) {
-    return `${greeting}, ${lowerCase[0]}. ${upperCaseLanguageAnd} ${upperCaseGreeting} ${upperCase[0]} !`
+    return (
+            `${greeting}, ${lowerCase[0]}. ${upperCaseLanguageAnd} ` +
+            multipleParameters(
+              upperCase,
+              upperCaseLanguageAnd,
+              upperCaseGreeting
+            )
+    )
   }
   return (
     multipleParameters(lowerCase, languageAnd, greeting) +
