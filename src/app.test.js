@@ -19,3 +19,8 @@ test('should replace undefined to my friend', () => {
   const result = greet(undefined)
   expect(result).toEqual('Hello, my friend.')
 })
+
+test('should return HELLO, JERRY! when given JERRY', () => {
+  const result = greet('JERRY')
+  expect(result).toEqual('HELLO, JERRY!')
+})
