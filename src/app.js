@@ -6,6 +6,9 @@ function greet (name) {
   if (name[name.length - 1] === 'fr') {
     return 'Bonjour, Marie.'
   }
+  if (name[name.length - 1] === 'en') {
+    return 'Hello, Marie.'
+  }
 
   if (typeof name === 'object') {
     if (haveUpperCase(name)) return lowerAndUpperCase(name)
