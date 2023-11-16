@@ -31,16 +31,21 @@ function greet (name) {
 
 function haveLanguage (greeting, name, languageAnd) {
   if (greeting !== undefined) {
-    const nameB = []
-    for (let index = 0; index < name.length - 1; index++) {
-      nameB.push(name[index])
-    }
-    name = nameB
+    name = removeLanguageParameter(name)
   } else {
     greeting = 'Hello'
     languageAnd = 'and'
   }
   return { greeting, name, languageAnd }
+}
+
+function removeLanguageParameter (name) {
+  const nameB = []
+  for (let index = 0; index < name.length - 1; index++) {
+    nameB.push(name[index])
+  }
+  name = nameB
+  return name
 }
 
 function findLanguage (name, greeting, languageAnd) {
