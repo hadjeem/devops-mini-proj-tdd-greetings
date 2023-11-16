@@ -6,6 +6,6 @@ test('should return Hello, Bob when given Bob', () => {
 })
 
 test('should replace empty to my friend', () => {
-  const resultEmpty = greet('')
-  expect(resultEmpty).toEqual('Hello, my friend.')
+  const result = greet('')
+  expect(result).toEqual('Hello, my friend.')
 })

@@ -1,5 +1,5 @@
 function greet (name) {
-  if (name === '') name = 'my friend'
+  if (name === '') return 'Hello, my friend'
   return `Hello, ${(name)}.`
 }
 
