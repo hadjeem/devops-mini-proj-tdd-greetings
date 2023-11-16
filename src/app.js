@@ -3,9 +3,7 @@ function greet (name) {
     return 'Hello, my friend.'
   }
   if (typeof name === 'object') {
-    for (const nameP of name) {
-      if (nameP === nameP.toUpperCase()) return lowerAndUpperCase(name)
-    }
+    if (haveUpperCase(name)) return lowerAndUpperCase(name)
   }
   if (typeof name === 'object' && name.length >= 3) {
     return moreThanTwoParameters(name)
@@ -22,6 +20,12 @@ function moreThanTwoParameters (name) {
   }
   result += ` and ${name[name.length - 1]}.`
   return result
+}
+
+function haveUpperCase (name) {
+  for (const nameP of name) {
+    if (nameP === nameP.toUpperCase()) return true
+  }
 }
 
 function lowerAndUpperCase (name) {
