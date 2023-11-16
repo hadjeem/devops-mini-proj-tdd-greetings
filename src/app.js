@@ -2,16 +2,17 @@ function greet (name) {
   if (name === '' || name === null || name === undefined) {
     return 'Hello, my friend.'
   }
-
+  let greeting
   if (name[name.length - 1] === 'fr') {
-    return 'Bonjour, Marie.'
+    greeting = 'Bonjour'
   }
   if (name[name.length - 1] === 'en') {
-    return 'Hello, Marie.'
+    greeting = 'Hello'
   }
   if (name[name.length - 1] === 'nl') {
-    return 'Hallo, Marie.'
+    greeting = 'Hallo'
   }
+  if (greeting !== undefined) return `${(greeting)}, ${(name[0])}.`
 
   if (typeof name === 'object') {
     if (haveUpperCase(name)) return lowerAndUpperCase(name)
