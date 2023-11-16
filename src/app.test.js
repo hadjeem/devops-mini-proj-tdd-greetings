@@ -26,6 +26,6 @@ test('should return HELLO, JERRY! when given JERRY', () => {
 })
 
 test('should return Hello, Jill and Jane. when given Jill and Jane', () => {
-    const result = greet(['Jill', 'Jane'])
-    expect(result).toEqual('Hello, Jill and Jane.')
-  })
+  const result = greet(['Jill', 'Jane'])
+  expect(result).toEqual('Hello, Jill and Jane.')
+})
