@@ -1,7 +1,5 @@
 function greet (name) {
-  if (name === '' || name === null || name === undefined) {
-    return 'Hello, my friend.'
-  }
+  if (name === '' || name === null || name === undefined) { return 'Hello, my friend.' }
   let greeting
   let languageAnd
     ;({ greeting, languageAnd } = findLanguage(name, greeting, languageAnd))
@@ -10,11 +8,8 @@ function greet (name) {
     name,
     languageAnd
   ))
-
-  if (typeof name === 'object') {
-    if (haveUpperCase(name)) {
-      return lowerAndUpperCase(name, languageAnd, greeting)
-    }
+  if (typeof name === 'object' && haveUpperCase(name)) {
+    return lowerAndUpperCase(name, languageAnd, greeting)
   }
   if (typeof name === 'object' && name.length >= 3) {
     return moreThanTwoParameters(name, languageAnd, greeting)
@@ -76,8 +71,8 @@ function fillStringMTTP (name, result, languageAnd, end) {
   for (let index = 1; index < name.length - 1; index++) {
     result += `, ${name[index]}`
   }
-  result += ` ${languageAnd} ${name[name.length - 1]}${end}`
-  return result
+  if (name.length === 1) return result + `${end}`
+  return result + ` ${languageAnd} ${name[name.length - 1]}${end}`
 }
 
 function areUpperCase (greeting, result, name) {
@@ -113,8 +108,8 @@ function lowerAndUpperCase (name, languageAnd, greeting) {
     return `${greeting}, ${lowerCase[0]}. ${upperCaseLanguageAnd} ${upperCaseGreeting} ${upperCase[0]} !`
   }
   return (
-    moreThanTwoParameters(lowerCase, languageAnd, greeting) +
-        ` ${upperCaseLanguageAnd} ${upperCaseGreeting} ${upperCase[0]} !`
+    moreThanTwoParameters(lowerCase, languageAnd, greeting) + 
+        ` ${upperCaseLanguageAnd} ` + moreThanTwoParameters(upperCase, upperCaseLanguageAnd, upperCaseGreeting)
   )
 }
 
