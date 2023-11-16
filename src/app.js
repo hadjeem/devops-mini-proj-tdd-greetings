@@ -61,16 +61,22 @@ function findLanguage (name, greeting, languageAnd) {
 
 function moreThanTwoParameters (name, languageAnd, greeting) {
   let result = `${greeting}, ${name[0]}`
-  let end = '.'
-  if (greeting.toUpperCase() === greeting) {
-    end = ' !'
-    result = `${greeting} ${name[0]}`
-  }
+  let end
+    ;({ end, result } = areUpperCase(greeting, result, name))
   for (let index = 1; index < name.length - 1; index++) {
     result += `, ${name[index]}`
   }
   result += ` ${languageAnd} ${name[name.length - 1]}${end}`
   return result
+}
+
+function areUpperCase (greeting, result, name) {
+  let end = '.'
+  if (greeting.toUpperCase() === greeting) {
+    end = ' !'
+    result = `${greeting} ${name[0]}`
+  }
+  return { end, result }
 }
 
 function haveUpperCase (name) {
@@ -93,11 +99,13 @@ function lowerAndUpperCase (name, languageAnd, greeting) {
     }
   }
   if (lowerCase.length === 0) {
-    return moreThanTwoParameters(name, upperCaseLanguageAnd, upperCaseGreeting)
+    return moreThanTwoParameters(
+      name,
+      upperCaseLanguageAnd,
+      upperCaseGreeting
+    )
   }
-  if (lowerCase.length === 1) {
-    return `${greeting}, ${lowerCase[0]}. ${upperCaseLanguageAnd} ${upperCaseGreeting} ${upperCase[0]} !`
-  }
+  if (lowerCase.length === 1) { return `${greeting}, ${lowerCase[0]}. ${upperCaseLanguageAnd} ${upperCaseGreeting} ${upperCase[0]} !` }
   return (
     moreThanTwoParameters(lowerCase, languageAnd, greeting) +
         ` ${upperCaseLanguageAnd} ${upperCaseGreeting} ${upperCase[0]} !`
