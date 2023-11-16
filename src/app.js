@@ -1,6 +1,6 @@
 function greet (name) {
   if (name === '' || name === null || name === undefined) return 'Hello, my friend.'
-  if (name === 'JERRY') return 'HELLO, JERRY!'
+  if (name.toUpperCase() === name) return `HELLO, ${(name)}!`
   return `Hello, ${(name)}.`
 }
 
