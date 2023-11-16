@@ -1,5 +1,7 @@
 function greet (name) {
-  if (name === '' || name === null || name === undefined) { return 'Hello, my friend.' }
+  if (name === '' || name === null || name === undefined) {
+    return 'Hello, my friend.'
+  }
   let greeting
   let languageAnd
     ;({ greeting, languageAnd } = findLanguage(name, greeting, languageAnd))
@@ -11,11 +13,8 @@ function greet (name) {
   if (typeof name === 'object' && haveUpperCase(name)) {
     return lowerAndUpperCase(name, languageAnd, greeting)
   }
-  if (typeof name === 'object' && name.length >= 3) {
-    return moreThanTwoParameters(name, languageAnd, greeting)
-  }
-  if (typeof name === 'object' && name[1] !== undefined) {
-    return `${greeting}, ${name[0]} ${languageAnd} ${name[1]}.`
+  if (typeof name === 'object' && name.length >= 2) {
+    return multipleParameters(name, languageAnd, greeting)
   }
   if (typeof name === 'string' && name.toUpperCase() === name) {
     greeting = greeting.toUpperCase()
@@ -59,7 +58,7 @@ function findLanguage (name, greeting, languageAnd) {
   return { greeting, languageAnd }
 }
 
-function moreThanTwoParameters (name, languageAnd, greeting) {
+function multipleParameters (name, languageAnd, greeting) {
   let result = `${greeting}, ${name[0]}`
   let end
     ;({ end, result } = areUpperCase(greeting, result, name))
@@ -98,18 +97,15 @@ function lowerAndUpperCase (name, languageAnd, greeting) {
 
   fillUpperLower(name, upperCase, lowerCase)
   if (lowerCase.length === 0) {
-    return moreThanTwoParameters(
-      name,
-      upperCaseLanguageAnd,
-      upperCaseGreeting
-    )
+    return multipleParameters(name, upperCaseLanguageAnd, upperCaseGreeting)
   }
   if (lowerCase.length === 1) {
     return `${greeting}, ${lowerCase[0]}. ${upperCaseLanguageAnd} ${upperCaseGreeting} ${upperCase[0]} !`
   }
   return (
-    moreThanTwoParameters(lowerCase, languageAnd, greeting) + 
-        ` ${upperCaseLanguageAnd} ` + moreThanTwoParameters(upperCase, upperCaseLanguageAnd, upperCaseGreeting)
+    multipleParameters(lowerCase, languageAnd, greeting) +
+        ` ${upperCaseLanguageAnd} ` +
+        multipleParameters(upperCase, upperCaseLanguageAnd, upperCaseGreeting)
   )
 }
 

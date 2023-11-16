@@ -87,5 +87,7 @@ test('should return BONJOUR MARIE, CHARLOTTE ET BRIAN ! when given MARIE, CHARLO
 
 test('should return Hello, Jill and Jane. AND HELLO MARIE, CHARLOTTE AND BRIAN ! when given Jill, Jane, MARIE, CHARLOTTE, BRIAN, en', () => {
   const result = greet(['Jill', 'Jane', 'MARIE', 'CHARLOTTE', 'BRIAN', 'en'])
-  expect(result).toEqual('Hello, Jill and Jane. AND HELLO MARIE, CHARLOTTE AND BRIAN !')
+  expect(result).toEqual(
+    'Hello, Jill and Jane. AND HELLO MARIE, CHARLOTTE AND BRIAN !'
+  )
 })
