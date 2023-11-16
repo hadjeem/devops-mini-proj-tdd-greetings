@@ -49,3 +49,8 @@ test('should return Hello, Marie. when given Marie, en', () => {
   const result = greet(['Marie', 'en'])
   expect(result).toEqual('Hello, Marie.')
 })
+
+test('should return Hallo, Marie. when given Marie, nl', () => {
+  const result = greet(['Marie', 'nl'])
+  expect(result).toEqual('Hallo, Marie.')
+})
