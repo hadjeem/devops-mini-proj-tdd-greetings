@@ -3,20 +3,18 @@ function greet (name) {
     return 'Hello, my friend.'
   }
   let greeting
-  let langageAnd
-    ;({ greeting, langageAnd } = findLangage(name, greeting, langageAnd))
-  ;({ greeting, name, langageAnd } = haveLangage(greeting, name, langageAnd))
-
-  if (typeof name === 'object') {
-    if (haveUpperCase(name)) {
-      return lowerAndUpperCase(name, langageAnd, greeting)
-    }
+  let languageAnd
+    ;({ greeting, languageAnd } = findLanguage(name, greeting, languageAnd))
+  ;({ greeting, name, languageAnd } = haveLanguage(
+    greeting,
+    name,
+    languageAnd
+  ))
+  if (typeof name === 'object' && haveUpperCase(name)) {
+    return lowerAndUpperCase(name, languageAnd, greeting)
   }
-  if (typeof name === 'object' && name.length >= 3) {
-    return moreThanTwoParameters(name, langageAnd, greeting)
-  }
-  if (typeof name === 'object' && name[1] !== undefined) {
-    return `${greeting}, ${name[0]} ${langageAnd} ${name[1]}.`
+  if (typeof name === 'object' && name.length >= 2) {
+    return multipleParameters(name, languageAnd, greeting)
   }
   if (typeof name === 'string' && name.toUpperCase() === name) {
     greeting = greeting.toUpperCase()
@@ -25,43 +23,64 @@ function greet (name) {
   return `${greeting}, ${name}.`
 }
 
-function haveLangage (greeting, name, langageAnd) {
+function haveLanguage (greeting, name, languageAnd) {
   if (greeting !== undefined) {
-    const nameB = []
-    for (let index = 0; index < name.length - 1; index++) {
-      nameB.push(name[index])
-    }
-    name = nameB
+    name = removeLanguageParameter(name)
   } else {
     greeting = 'Hello'
-    langageAnd = 'and'
+    languageAnd = 'and'
   }
-  return { greeting, name, langageAnd }
+  return { greeting, name, languageAnd }
 }
 
-function findLangage (name, greeting, langageAnd) {
+function removeLanguageParameter (name) {
+  const nameB = []
+  for (let index = 0; index < name.length - 1; index++) {
+    nameB.push(name[index])
+  }
+  name = nameB
+  return name
+}
+
+function findLanguage (name, greeting, languageAnd) {
   if (name[name.length - 1] === 'fr') {
     greeting = 'Bonjour'
-    langageAnd = 'et'
+    languageAnd = 'et'
   }
   if (name[name.length - 1] === 'en') {
     greeting = 'Hello'
-    langageAnd = 'and'
+    languageAnd = 'and'
   }
   if (name[name.length - 1] === 'nl') {
     greeting = 'Hallo'
-    langageAnd = 'en'
+    languageAnd = 'en'
   }
-  return { greeting, langageAnd }
+  return { greeting, languageAnd }
 }
 
-function moreThanTwoParameters (name, langageAnd, greeting) {
-  let result = greeting
-  for (let index = 0; index < name.length - 1; index++) {
+function multipleParameters (name, languageAnd, greeting) {
+  let result = `${greeting}, ${name[0]}`
+  let end
+    ;({ end, result } = areUpperCase(greeting, result, name))
+  result = fillStringMTTP(name, result, languageAnd, end)
+  return result
+}
+
+function fillStringMTTP (name, result, languageAnd, end) {
+  for (let index = 1; index < name.length - 1; index++) {
     result += `, ${name[index]}`
   }
-  result += ` ${langageAnd} ${name[name.length - 1]}.`
-  return result
+  if (name.length === 1) return result + `${end}`
+  return result + ` ${languageAnd} ${name[name.length - 1]}${end}`
+}
+
+function areUpperCase (greeting, result, name) {
+  let end = '.'
+  if (greeting.toUpperCase() === greeting) {
+    end = ' !'
+    result = `${greeting} ${name[0]}`
+  }
+  return { end, result }
 }
 
 function haveUpperCase (name) {
@@ -70,12 +89,34 @@ function haveUpperCase (name) {
   }
 }
 
-function lowerAndUpperCase (name, langageAnd, greeting) {
+function lowerAndUpperCase (name, languageAnd, greeting) {
   const lowerCase = []
   const upperCase = []
-  const upperCaseLangageAnd = langageAnd.toUpperCase()
+  const upperCaseLanguageAnd = languageAnd.toUpperCase()
   const upperCaseGreeting = greeting.toUpperCase()
 
+  fillUpperLower(name, upperCase, lowerCase)
+  if (lowerCase.length === 0) {
+    return multipleParameters(name, upperCaseLanguageAnd, upperCaseGreeting)
+  }
+  if (lowerCase.length === 1) {
+    return (
+            `${greeting}, ${lowerCase[0]}. ${upperCaseLanguageAnd} ` +
+            multipleParameters(
+              upperCase,
+              upperCaseLanguageAnd,
+              upperCaseGreeting
+            )
+    )
+  }
+  return (
+    multipleParameters(lowerCase, languageAnd, greeting) +
+        ` ${upperCaseLanguageAnd} ` +
+        multipleParameters(upperCase, upperCaseLanguageAnd, upperCaseGreeting)
+  )
+}
+
+function fillUpperLower (name, upperCase, lowerCase) {
   for (const nameP of name) {
     if (nameP === nameP.toUpperCase()) {
       upperCase.push(nameP)
@@ -83,13 +124,6 @@ function lowerAndUpperCase (name, langageAnd, greeting) {
       lowerCase.push(nameP)
     }
   }
-  if (lowerCase.length === 1) {
-    return `${greeting}, ${lowerCase[0]}. ${upperCaseLangageAnd} ${upperCaseGreeting} ${upperCase[0]} !`
-  }
-  return (
-    moreThanTwoParameters(lowerCase, langageAnd, greeting) +
-        ` ${upperCaseLangageAnd} ${upperCaseGreeting} ${upperCase[0]} !`
-  )
 }
 
 module.exports = greet
