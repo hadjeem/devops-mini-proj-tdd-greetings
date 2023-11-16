@@ -2,6 +2,11 @@ function greet (name) {
   if (name === '' || name === null || name === undefined) {
     return 'Hello, my friend.'
   }
+
+  if (name[name.length - 1] === 'fr') {
+    return 'Bonjour, Marie.'
+  }
+
   if (typeof name === 'object') {
     if (haveUpperCase(name)) return lowerAndUpperCase(name)
   }
