@@ -5,16 +5,7 @@ function greet (name) {
   let greeting
   let langageAnd
     ;({ greeting, langageAnd } = findLangage(name, greeting, langageAnd))
-  if (greeting !== undefined) {
-    const nameB = []
-    for (let index = 0; index < name.length - 1; index++) {
-      nameB.push(name[index])
-    }
-    name = nameB
-  } else {
-    greeting = 'Hello'
-    langageAnd = 'and'
-  }
+  ;({ greeting, name, langageAnd } = haveLangage(greeting, name, langageAnd))
 
   if (typeof name === 'object') {
     if (haveUpperCase(name)) {
@@ -32,6 +23,20 @@ function greet (name) {
     return `${greeting}, ${name}!`
   }
   return `${greeting}, ${name}.`
+}
+
+function haveLangage (greeting, name, langageAnd) {
+  if (greeting !== undefined) {
+    const nameB = []
+    for (let index = 0; index < name.length - 1; index++) {
+      nameB.push(name[index])
+    }
+    name = nameB
+  } else {
+    greeting = 'Hello'
+    langageAnd = 'and'
+  }
+  return { greeting, name, langageAnd }
 }
 
 function findLangage (name, greeting, langageAnd) {
