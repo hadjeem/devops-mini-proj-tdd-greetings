@@ -1,12 +1,16 @@
 function greet (name) {
   if (name === '' || name === null || name === undefined) return 'Hello, my friend.'
-
   if (typeof (name) === 'object') {
+    const lowerCase = []
+    const upperCase = []
     for (const nameP of name) {
       if (nameP === nameP.toUpperCase()) {
-        return 'Hello, Amy and Charlotte. AND HELLO BRIAN !'
+        upperCase.push(nameP)
+      } else {
+        lowerCase.push(nameP)
       }
     }
+    if (upperCase[0] !== undefined) return moreThanTwoParameters(lowerCase) + ` AND HELLO ${upperCase[0]} !`
   }
 
   if (typeof (name) === 'object' && name.length >= 3) {
