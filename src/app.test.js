@@ -34,3 +34,8 @@ test('should return Hello, Amy, Brian and Charlotte. when given Amy, Brian and C
   const result = greet(['Amy', 'Brian', 'Charlotte'])
   expect(result).toEqual('Hello, Amy, Brian and Charlotte.')
 })
+
+test('should returnHello, Amy and Charlotte. AND HELLO BRIAN !', () => {
+  const result = greet(['Amy', 'BRIAN', 'Charlotte'])
+  expect(result).toEqual('Hello, Amy and Charlotte. AND HELLO BRIAN !')
+})
