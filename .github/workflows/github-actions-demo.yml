@@ -21,6 +21,10 @@ jobs:
 
       - name: Print starting time
         run: echo "pipeline start date is $(date +%H:%M:%S)"
+
+      - name: Format with prettier
+        run: npm install prettier
+        
         
 
         
