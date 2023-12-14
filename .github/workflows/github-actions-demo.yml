@@ -20,7 +20,7 @@ jobs:
         run: npm install
 
       - name: Print starting time
-        run: echo "pipeline start date +%H:%M:%S"
+        run: echo "pipeline start date is $(date +%H:%M:%S)"
         
 
         
