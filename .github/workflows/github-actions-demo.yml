@@ -24,7 +24,13 @@ jobs:
 
       - name: Format with prettier
         run: npm install prettier
-        
+
+      - name: Format with eslint
+        run: npm install linter
+
+      - name: Run tests coverage
+        run: npm run coverage
+
         
 
         
