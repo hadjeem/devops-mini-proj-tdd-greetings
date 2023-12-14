@@ -10,7 +10,7 @@
         "lint": "eslint .",
         "lint:fix": "eslint --fix .",
         "code:fix": "prettier --write . && eslint --fix .",
-        "build": "webpack ./greet.js -o dist/",
+        "build": "webpack ./src/app.js -o dist/",
         "coverage": "jest --coverage"
     },
     "author": "",
