@@ -55,11 +55,13 @@ Liens utiles:
 ```
 - Quelle est la différence entre run et run_on ?  Expliquez par rapport à votre pipeline.  
 ```bash
-<votre réponse ici>
+<Run-on défini l'endroit (la VM) où les runs seront exécutés.
+Tous nos run seront exécutés sur la dernière version de UBUNTU>
 ```
 - Quelle est la différence entre “use” et “run”. Expliquez par rapport à votre pipeline. 
 ```bash
-<votre réponse ici>
+<use est utilisé pour des actions déjà prédéfinies alors que run est utilisé pour spécifier des commandes à exécuter dans le contexte d'une étape du pipeline.
+On utilise 'uses' afin d'avoir accès au code de notre répertoire et également pour setup node tandis que run est utilisé pour écrire le bash des exercices demandés et donc pour des lignes de commandes plus spécifiques>
 ```
 - Peut-on intervertir différentes étapes dans votre pipeline ? Que votre réponse soit oui ou non, expliquez par rapport à votre pipeline. 
 ```bash
