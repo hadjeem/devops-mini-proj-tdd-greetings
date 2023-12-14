@@ -1,8 +1,3 @@
-Groupe 20
-Dimitri Danloy 2bin2
-Hadjera Emroska 2bin1
-Semih Turkoglu 2bin1
-
 Lancer le projet
 npm i
 npm test
@@ -11,8 +6,8 @@ npm test
 Travail de recherche , mettre en place de l'integration continue avec les GitHub Actions
 
 ## Informations
-- N° de groupe :
-- Membres du groupe :
+- N° de groupe : 20
+- Membres du groupe : Danloy Dimitri 2BIN2, Emroska Hadjera 2BIN1, Turkoglu Semih 2BIN1 
 
 
 ## Énoncé
