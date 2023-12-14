@@ -19,6 +19,10 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+      - name: Print starting time
+        run: echo "pipeline start date +%H:%M:%S"
+        
+
         
 
       
