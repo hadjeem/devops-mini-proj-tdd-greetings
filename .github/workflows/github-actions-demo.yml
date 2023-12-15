@@ -39,8 +39,5 @@ jobs:
 
       - name: Print success message
         run: echo "PIPELINE SUCCESS WITHOUT ERRORS"
-        
 
-        
 
-      
