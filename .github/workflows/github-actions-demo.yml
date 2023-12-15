@@ -37,3 +37,10 @@ jobs:
       - name: Print ending time
         run: echo "pipeline end date is $(date +%H:%M:%S)"
 
+      - name: Print success message
+        run: echo "PIPELINE SUCCESS WITHOUT ERRORS"
+        
+
+        
+
+      
