@@ -7,7 +7,8 @@ Travail de recherche , mettre en place de l'integration continue avec les GitHub
 
 ## Informations
 - N° de groupe : 20
-- Membres du groupe : Danloy Dimitri 2BIN2, Emroska Hadjera 2BIN1, Turkoglu Semih 2BIN1 
+- Membres du groupe : Danloy Dimitri 2BIN2, Emroska Hadjera 2BIN1, Turkoglu Semih 2BIN1
+- lien du repo : https://github.com/hadjeem/devops-mini-proj-tdd-greetings
 
 
 ## Énoncé
