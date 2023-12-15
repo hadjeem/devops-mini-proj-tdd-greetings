@@ -37,8 +37,3 @@ jobs:
       - name: Print ending time
         run: echo "pipeline end date is $(date +%H:%M:%S)"
 
-        
-
-        
-
-      
