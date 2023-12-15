@@ -43,4 +43,42 @@ jobs:
 
         
 
-      
+      name: Github Actions Demo
+
+on:
+  pull_request:
+    branches: main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18"
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Print starting time
+        run: echo "pipeline start date is $(date +%H:%M:%S)"
+
+      - name: Format with prettier
+        run: npm run prettier:fix
+
+      - name: Format with eslint
+        run: npm run lint:fix
+
+      - name: Run tests coverage
+        run: npm run coverage
+
+      - name: Build
+        run: npm run build
+
+      - name: Print ending time
+        run: echo "pipeline end date is $(date +%H:%M:%S)"
+
